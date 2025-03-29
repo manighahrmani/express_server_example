@@ -1,8 +1,8 @@
 import pkg from 'pg';
-export const { Client } = pkg;
 import { readFile } from 'fs/promises';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+export const { Client } = pkg;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
