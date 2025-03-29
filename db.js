@@ -1,5 +1,5 @@
 import pkg from 'pg';
-const { Client } = pkg;
+export const { Client } = pkg;
 import { readFile } from 'fs/promises';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';

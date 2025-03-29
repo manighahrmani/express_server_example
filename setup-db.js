@@ -1,4 +1,4 @@
-import { client, readSqlFile } from './db.js';
+import { Client, client, readSqlFile } from './db.js';
 
 async function setupDatabase() {
   try {
