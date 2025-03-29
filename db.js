@@ -11,7 +11,7 @@ export const client = new Client({
   user: 'postgres',
   host: 'localhost',
   database: 'postgres',
-  password: '',
+  password: '', // Add your password for the PostgreSQL user here
   port: 5432,
 });
 
