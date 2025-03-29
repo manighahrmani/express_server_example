@@ -93,6 +93,7 @@ npm run cleanup
 - `package.json`: Contains project metadata and scripts (don't edit manually)
 - `package-lock.json`: Auto-generated dependency tree (don't edit)
 - `svr.js`: Main Express server file
+- `db.js`: Database utilities and shared connection functionality
 - `setup-db.js`: Database initialization script
 - `cleanup-db.js`: Database removal script
 
