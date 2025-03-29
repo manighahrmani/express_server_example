@@ -24,7 +24,7 @@ function renderMessages(messages) {
   });
 }
 
-async function pageLoaded() {
+function pageLoaded() {
   const getButton = document.querySelector('#get-messages');
   getButton.addEventListener('click', fetchMessages);
 }
