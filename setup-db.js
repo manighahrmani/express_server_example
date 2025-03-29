@@ -7,11 +7,6 @@ import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const readSqlFile = async (filename) => {
-  const path = join(__dirname, 'db', filename);
-  return await readFile(path, 'utf8');
-};
-
 const client = new Client({
   user: 'postgres',
   host: 'localhost',
@@ -19,6 +14,11 @@ const client = new Client({
   password: '', // Your PostgreSQL password if set
   port: 5432,
 });
+
+async function readSqlFile(filename) {
+  const path = join(__dirname, 'db', filename);
+  return await readFile(path, 'utf8');
+}
 
 async function setupDatabase() {
   try {
