@@ -14,7 +14,11 @@ const dbClient = new Client({
   port: 5432,
 });
 
-await dbClient.connect();
+// Connect to the database
+// This is a self-invoking async function to connect to the database
+(async () => {
+  await dbClient.connect();
+})();
 
 // API endpoint to get messages
 app.get('/api/messages', async (req, res) => {
