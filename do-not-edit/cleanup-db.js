@@ -1,5 +1,5 @@
 import { client } from './db.js';
-import dbConfig from '../db-config.json';
+import dbConfig from '../db-config';
 
 async function cleanupDatabase() {
   try {

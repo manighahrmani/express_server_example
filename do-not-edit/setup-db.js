@@ -1,5 +1,5 @@
 import { Client, client, readSqlFile } from './db.js';
-import dbConfig from '../db-config.json';
+import dbConfig from '../db-config.js';
 
 async function setupDatabase() {
   try {
