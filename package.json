@@ -1,9 +1,9 @@
 {
   "name": "test",
   "version": "1.0.0",
-  "main": "svr.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node svr.js",
+    "start": "node server.js",
     "setup": "node do-not-edit/setup-db.js",
     "cleanup": "node do-not-edit/cleanup-db.js"
   },

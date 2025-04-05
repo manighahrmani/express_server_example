@@ -106,7 +106,7 @@ npm run cleanup
 - `db-config.json`: Editable database connection settings
 - `package.json`: Contains project metadata and scripts
 - `package-lock.json`: Auto-generated dependency tree
-- `svr.js`: Main Express server file
+- `server.js`: Main Express server file
 - `README.md`: Project instructions and structure guide
 
 ### Client Directory
