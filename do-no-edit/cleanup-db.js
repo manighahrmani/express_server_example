@@ -1,12 +1,13 @@
-import { client, readSqlFile } from './db.js';
+import { client } from './db.js';
+import dbConfig from '../db-config.json';
 
 async function cleanupDatabase() {
   try {
     await client.connect();
 
-    const dropDbSql = await readSqlFile('drop-db.sql');
-    await client.query(dropDbSql);
-    console.log('Database dropped successfully');
+    const dbName = dbConfig.database;
+    await client.query(`DROP DATABASE IF EXISTS ${dbName}`);
+    console.log(`Database '${dbName}' dropped successfully`);
   } catch (err) {
     console.error('Error cleaning up database:', err);
     process.exit(1);

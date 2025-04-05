@@ -5,9 +5,9 @@ async function setupDatabase() {
   try {
     await client.connect();
 
-    const createDbSql = await readSqlFile('create-db.sql');
-    await client.query(createDbSql);
-    console.log('Database created successfully');
+    const dbName = dbConfig.database;
+    await client.query(`CREATE DATABASE ${dbName}`);
+    console.log(`Database '${dbName}' created successfully`);
 
     await client.end();
 
