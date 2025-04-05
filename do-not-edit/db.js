@@ -2,7 +2,7 @@ import pkg from 'pg';
 import { readFile } from 'fs/promises';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import dbConfig from '../db-config.json';
+import dbConfig from '../db-config';
 
 export const { Client } = pkg;
 
