@@ -4,7 +4,8 @@
 export default {
   user: 'postgres', // Your PostgreSQL username
   host: 'localhost', // Your PostgreSQL host (usually localhost)
-  database: 'message_board', // Your PostgreSQL database name
+  database: 'message_board', // The DB your app will use (make sure this doesn't exist yet)
+  adminDatabase: 'postgres', // The DB used when creating/dropping the app DB (make sure this exists)
   password: '', // Your PostgreSQL password (leave empty if no password)
   port: 5432, // Your PostgreSQL port (default is 5432)
 };
