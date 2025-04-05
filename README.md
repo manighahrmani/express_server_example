@@ -125,16 +125,13 @@ These files manage backend setup. Do not edit them.
 
 ### Database Directory
 
-This directory contains SQL files for database setup and management.
+This directory contains SQL files for schema and seed data.
 
-- `create-db.sql`: Creates the message_board database
 - `create-tables.sql`: Defines the schema
 - `seed-data.sql`: Initial data
-- `drop-db.sql`: Removes the database
 
 ## Notes
 
 - The database is created from scratch each time you run `npm run setup`
 - The `database` name is defined in `db-config.json` and used throughout
 - Run `npm run cleanup` before `npm run setup` to start fresh
-
