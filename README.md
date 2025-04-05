@@ -62,7 +62,8 @@ CREATE ROLE postgres WITH SUPERUSER LOGIN PASSWORD 'your_password';
 export default {
   user: "postgres",
   host: "localhost",
-  database: "message_board",
+  database: "message_board", // The DB your app will use
+  adminDatabase: "postgres", // Used for DROP/CREATE operations
   password: "",
   port: 5432,
 };
