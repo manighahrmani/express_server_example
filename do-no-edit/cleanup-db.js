@@ -4,7 +4,6 @@ async function cleanupDatabase() {
   try {
     await client.connect();
 
-    // Drop the database
     const dropDbSql = await readSqlFile('drop-db.sql');
     await client.query(dropDbSql);
     console.log('Database dropped successfully');
