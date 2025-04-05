@@ -4,8 +4,6 @@
 
 Before getting started, you'll need to have the following installed on your system:
 
-### For all operating systems:
-
 1. **Node.js** (v14 or higher recommended)
    - Download from [nodejs.org](https://nodejs.org/)
    - Verify installation: `node --version`
@@ -54,18 +52,38 @@ psql -U <your_superuser>
 CREATE ROLE postgres WITH SUPERUSER LOGIN PASSWORD 'your_password';
 ```
 
+You also need to have a database named `postgres` already in place. This is the default database created by PostgreSQL.
+
+1. You can check if it exists by running:
+
+```bash
+psql -U postgres -l
+```
+
+2. If it doesn't exist, log in as a superuser and create it:
+
+```bash
+psql -U <your_superuser>
+```
+
+3. Then run the following command to create the database:
+
+```sql
+CREATE DATABASE postgres WITH OWNER postgres;
+```
+
 ## Project Setup
 
-1. Configure your database settings in `db-config.js`. The `database` field (e.g. `message_board`) is used consistently for setup and connection:
+1. Edit your database settings in `db-config.js`. The `database` field (e.g. `message_board`) is used consistently for setup and connection:
 
 ```js
 export default {
-  user: "postgres",
-  host: "localhost",
-  database: "message_board", // The DB your app will use
-  adminDatabase: "postgres", // Used for DROP/CREATE operations
-  password: "",
-  port: 5432,
+  user: "postgres", // Your PostgreSQL username
+  host: "localhost", // Your PostgreSQL host (usually localhost)
+  database: "message_board", // The DB your app will use (make sure this doesn't exist yet)
+  adminDatabase: "postgres", // The DB used when creating/dropping the app DB (make sure this exists)
+  password: "", // Your PostgreSQL password (leave empty if no password)
+  port: 5432, // Your PostgreSQL port (default is 5432)
 };
 ```
 
@@ -101,38 +119,32 @@ npm run cleanup
 
 ## Project Structure
 
-### Root Files
+### Files On the Root Directory
 
 - `db-config.json`: Editable database connection settings
-- `package.json`: Contains project metadata and scripts
-- `package-lock.json`: Auto-generated dependency tree
-- `server.js`: Main Express server file
+- `package.json`: Contains project metadata and scripts (Do not edit manually)
+- `package-lock.json`: Auto-generated dependency tree (Do not edit)
+- `server.js`: Editable main Express server file
 - `README.md`: Project instructions and structure guide
 
-### Client Directory
+### Client Directory (`client`)
 
 These files are served to the client. Ensure `index.html` is the entry point.
 
-- `index.html`: Main HTML page
-- `index.js`: Client-side JavaScript
+- `index.html`: Editable main HTML page
+- `index.js`: Editable client-side JavaScript
 
-### do-not-edit Directory
-
-These files manage backend setup. Do not edit them.
-
-- `db.js`: Database utilities and shared connection
-- `setup-db.js`: Database initialisation script
-- `cleanup-db.js`: Database removal script
-
-### Database Directory
+### Database Directory (`db`)
 
 This directory contains SQL files for schema and seed data.
 
-- `create-tables.sql`: Defines the schema
-- `seed-data.sql`: Initial data
+- `create-tables.sql`: Editable schema definition
+- `seed-data.sql`: Editable initial data
 
-## Notes
+### Do Not Edit Directory (`do-not-edit`)
 
-- The database is created from scratch each time you run `npm run setup`
-- The `database` name is defined in `db-config.json` and used throughout
-- Run `npm run cleanup` before `npm run setup` to start fresh
+These files manage backend setup. Do not edit them.
+
+- `db.js`: Database utilities and shared connection (Do not edit)
+- `setup-db.js`: Database initialisation script (Do not edit)
+- `cleanup-db.js`: Database removal script (Do not edit)
