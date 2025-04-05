@@ -21,14 +21,16 @@ Before getting started, you'll need to have the following installed on your syst
        ```bash
        psql --version
        ```
-     - If you encounter issues, you may need to add PostgreSQL to your PATH manually.
    - **macOS**:
      - Install Homebrew from [brew.sh](https://brew.sh/)
      - Open Terminal and run:
        ```bash
        brew install postgresql
        ```
-     - Verify installation: `psql --version`
+     - After installation, verify PostgreSQL is in your PATH:
+       ```bash
+       psql --version
+       ```
 
 ### PostgreSQL User Setup
 
