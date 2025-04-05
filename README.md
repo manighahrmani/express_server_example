@@ -56,31 +56,43 @@ CREATE ROLE postgres WITH SUPERUSER LOGIN PASSWORD 'your_password';
 
 ## Project Setup
 
-1. Install dependencies:
+1. Configure your database settings in `db-config.json`. The `database` field (e.g. `message_board`) is used consistently for setup and connection:
+
+```json
+{
+  "user": "postgres",
+  "host": "localhost",
+  "database": "message_board",
+  "password": "",
+  "port": 5432
+}
+```
+
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-2. Create the database and tables (see below for details):
+3. Create the database and tables:
 
 ```bash
 npm run setup
 ```
 
-3. Start the server:
+4. Start the server:
 
 ```bash
 npm start
 ```
 
-4. Open your browser and navigate to:
+5. Open your browser and navigate to:
 
 ```
 http://localhost:8080
 ```
 
-5. To clean up the database (you need to re-run `npm run setup` afterwards):
+6. To clean up the database (you need to re-run `npm run setup` afterwards):
 
 ```bash
 npm run cleanup
@@ -90,31 +102,39 @@ npm run cleanup
 
 ### Root Files
 
-- `package.json`: Contains project metadata and scripts (don't edit manually)
-- `package-lock.json`: Auto-generated dependency tree (don't edit)
+- `db-config.json`: Editable database connection settings
+- `package.json`: Contains project metadata and scripts
+- `package-lock.json`: Auto-generated dependency tree
 - `svr.js`: Main Express server file
-- `db.js`: Database utilities and shared connection functionality
-- `setup-db.js`: Database initialization script
-- `cleanup-db.js`: Database removal script
+- `README.md`: Project instructions and structure guide
 
 ### Client Directory
 
-These files are served to the client. You can add more files here as needed but ensure that `index.html` is the main entry point of your application. CSS goes here too.
+These files are served to the client. Ensure `index.html` is the entry point.
 
 - `index.html`: Main HTML page
 - `index.js`: Client-side JavaScript
 
+### do-not-edit Directory
+
+These files manage backend setup. Do not edit them.
+
+- `db.js`: Database utilities and shared connection
+- `setup-db.js`: Database initialisation script
+- `cleanup-db.js`: Database removal script
+
 ### Database Directory
 
-This directory contains SQL files for database setup and management. You can add more SQL files here as needed but ensure that the main files are named as follows:
+This directory contains SQL files for database setup and management.
 
 - `create-db.sql`: Creates the message_board database
-- `create-tables.sql`: Defines the database schema
-- `seed-data.sql`: Contains initial data
+- `create-tables.sql`: Defines the schema
+- `seed-data.sql`: Initial data
 - `drop-db.sql`: Removes the database
 
 ## Notes
 
 - The database is created from scratch each time you run `npm run setup`
-- The database is named `message_board` and will persist between server restarts
+- The `database` name is defined in `db-config.json` and used throughout
 - Run `npm run cleanup` before `npm run setup` to start fresh
+
