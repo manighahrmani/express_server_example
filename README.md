@@ -56,16 +56,16 @@ CREATE ROLE postgres WITH SUPERUSER LOGIN PASSWORD 'your_password';
 
 ## Project Setup
 
-1. Configure your database settings in `db-config.json`. The `database` field (e.g. `message_board`) is used consistently for setup and connection:
+1. Configure your database settings in `db-config.js`. The `database` field (e.g. `message_board`) is used consistently for setup and connection:
 
-```json
-{
-  "user": "postgres",
-  "host": "localhost",
-  "database": "message_board",
-  "password": "",
-  "port": 5432
-}
+```js
+export default {
+  user: "postgres",
+  host: "localhost",
+  database: "message_board",
+  password: "",
+  port: 5432,
+};
 ```
 
 2. Install dependencies:
