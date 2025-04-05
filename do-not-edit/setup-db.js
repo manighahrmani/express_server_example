@@ -1,17 +1,20 @@
-import { Client, client, readSqlFile } from './db.js';
+import { Client, readSqlFile } from './db.js';
 import dbConfig from '../db-config.js';
 
 async function setupDatabase() {
+  const { database, adminDatabase, ...baseConfig } = dbConfig;
+
+  // Use admin database to create the target database
+  const adminClient = new Client({ ...baseConfig, database: adminDatabase });
+
   try {
-    await client.connect();
+    await adminClient.connect();
+    await adminClient.query(`CREATE DATABASE ${database}`);
+    console.log(`Database '${database}' created successfully`);
+    await adminClient.end();
 
-    const dbName = dbConfig.database;
-    await client.query(`CREATE DATABASE ${dbName}`);
-    console.log(`Database '${dbName}' created successfully`);
-
-    await client.end();
-
-    const dbClient = new Client(dbConfig);
+    // Now connect to the newly created database
+    const dbClient = new Client({ ...baseConfig, database });
     await dbClient.connect();
 
     const createTablesSql = await readSqlFile('create-tables.sql');
