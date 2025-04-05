@@ -11,7 +11,7 @@ async function setupDatabase() {
 
     await client.end();
 
-    const dbClient = new Client({ ...dbConfig, database: 'message_board' });
+    const dbClient = new Client(dbConfig);
     await dbClient.connect();
 
     const createTablesSql = await readSqlFile('create-tables.sql');
