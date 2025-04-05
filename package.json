@@ -4,8 +4,8 @@
   "main": "svr.js",
   "scripts": {
     "start": "node svr.js",
-    "setup": "node setup-db.js",
-    "cleanup": "node cleanup-db.js"
+    "setup": "node do-not-edit/setup-db.js",
+    "cleanup": "node do-not-edit/cleanup-db.js"
   },
   "author": "",
   "license": "ISC",
